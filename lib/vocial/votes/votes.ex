@@ -8,7 +8,6 @@ defmodule Vocial.Votes do
     Poll
     |> Repo.all()
     |> Repo.preload(:options)
-
   end
 
   def list_options do
@@ -24,7 +23,7 @@ defmodule Vocial.Votes do
   def create_poll_with_options(poll_attrs, options) do
     Repo.transaction(fn ->
       with {:ok, poll} <- create_poll(poll_attrs),
-      {:ok, _options} <- create_options(options, poll) do
+           {:ok, _options} <- create_options(options, poll) do
         poll |> Repo.preload(:options)
       else
         _ -> Repo.rollback("Failed to create poll")
@@ -39,9 +38,10 @@ defmodule Vocial.Votes do
   end
 
   def create_options(options, poll) do
-    results = Enum.map(options, fn option ->
-      create_option(%{title: option, poll_id: poll.id})
-    end)
+    results =
+      Enum.map(options, fn option ->
+        create_option(%{title: option, poll_id: poll.id})
+      end)
 
     if Enum.any?(results, fn {status, _} -> status == :error end) do
       {:error, "Failed to create as option"}
@@ -50,10 +50,9 @@ defmodule Vocial.Votes do
     end
   end
 
-  def create_option(attrs)do
+  def create_option(attrs) do
     %Option{}
     |> Option.changeset(attrs)
     |> Repo.insert()
   end
-
- end
+end

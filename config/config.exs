@@ -14,8 +14,7 @@ config :vocial, VocialWeb.Endpoint,
   url: [host: "localhost"],
   secret_key_base: "b8Yt1sgtTh2Zk+e1ahECj08rmr78LF9UvpC4LmdvRfBC4cr+b0k21RWCXVVIdGsK",
   render_errors: [view: VocialWeb.ErrorView, accepts: ~w(html json)],
-  pubsub: [name: Vocial.PubSub,
-           adapter: Phoenix.PubSub.PG2]
+  pubsub: [name: Vocial.PubSub, adapter: Phoenix.PubSub.PG2]
 
 # Configures Elixir's Logger
 config :logger, :console,
@@ -24,4 +23,4 @@ config :logger, :console,
 
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
-import_config "#{Mix.env}.exs"
+import_config "#{Mix.env()}.exs"

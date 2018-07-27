@@ -5,10 +5,10 @@ defmodule Vocial.Votes.Option do
   alias Vocial.Votes.Poll
 
   schema "options" do
-    field :title, :string
-    field :votes, :integer, default: 0
+    field(:title, :string)
+    field(:votes, :integer, default: 0)
 
-    belongs_to :poll, Poll
+    belongs_to(:poll, Poll)
 
     timestamps()
   end

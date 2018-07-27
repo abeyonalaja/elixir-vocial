@@ -25,13 +25,13 @@ defmodule VocialWeb.ChannelCase do
     end
   end
 
-
   setup tags do
     :ok = Ecto.Adapters.SQL.Sandbox.checkout(Vocial.Repo)
+
     unless tags[:async] do
       Ecto.Adapters.SQL.Sandbox.mode(Vocial.Repo, {:shared, self()})
     end
+
     :ok
   end
-
 end

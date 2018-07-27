@@ -9,9 +9,8 @@ defmodule Vocial.VotesTest do
     def poll_fixture(attrs \\ %{}) do
       with create_attrs <- Enum.into(attrs, @valid_attrs),
            {:ok, poll} <- Votes.create_poll(create_attrs),
-             poll <- Repo.preload(poll, :options)
-        do
-          poll
+           poll <- Repo.preload(poll, :options) do
+        poll
       end
     end
 
@@ -38,5 +37,4 @@ defmodule Vocial.VotesTest do
     assert poll.title == title
     assert Enum.count(poll.options) == 3
   end
-
 end

@@ -5,14 +5,14 @@ defmodule Vocial.Votes.Poll do
   alias Vocial.Votes.Option
 
   schema "polls" do
-    field :title, :string
+    field(:title, :string)
 
-    has_many :options, Option
+    has_many(:options, Option)
 
     timestamps()
   end
 
-  def changeset(%Poll{}=poll, attrs) do
+  def changeset(%Poll{} = poll, attrs) do
     poll
     |> cast(attrs, [:title])
     |> validate_required([:title])
