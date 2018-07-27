@@ -3,6 +3,6 @@ defmodule VocialWeb.PollControllerTest do
 
   test "GET /", %{conn: conn} do
     conn = get conn, "/polls"
-    assert html_response(conn, 200) =~ "My First Poll"
+    assert html_response(conn, 200) =~ "Logo"
   end
 end
