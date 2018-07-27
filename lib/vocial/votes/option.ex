@@ -1,7 +1,7 @@
 defmodule Vocial.Votes.Option do
   use Ecto.Schema
   import Ecto.Changeset
-  alias Vocial.Votes.Options
+  alias Vocial.Votes.Option
   alias Vocial.Votes.Poll
 
   schema "options" do
@@ -13,8 +13,8 @@ defmodule Vocial.Votes.Option do
     timestamps()
   end
 
-  def changeset(%OPtion{}=option, attrs) do
-    options:
+  def changeset(%Option{} = option, attrs) do
+    option
     |> cast(attrs, [:title, :votes, :poll_id])
     |> validate_required([:title, :votes, :poll_id])
   end
